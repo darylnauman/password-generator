@@ -13,22 +13,25 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
 // My Initial Code
 var passwordLength;
+
+// Variables to track if user wishes to include lowercase letters, uppercase letters, numbers and/or special characters in their password
 var includeLowercase;
 var includeUppercase; 
 var includeNumeric;
 var includeSpecial;
 
+// Arrays of values to create password
+const specialCharacters = [" ", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+","-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[","\\", "]", "^", "_", "`", "{", "|", "}", "~"];
+const alphabetUppercase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+const alphabetLowercase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+// alphabetLowercase = alphabetUppercase.map(alphabetUppercase => alphabetUppercase.toLowerCase());
+
 function generatePassword() {
   getPasswordLength();
   console.log(`Password length ${passwordLength}`);
   getPasswordCriteria();
-  // console.log(`Include lowercase: ${includeLowercase}`);
-  // console.log(`Include uppercase: ${includeUppercase}`);
-  // console.log(`Include numeric: ${includeNumeric}`);
-  // console.log(`Include special: ${includeSpecial}`);
   return;
 };
 
@@ -63,8 +66,6 @@ function getPasswordCriteria() {
       alert(`Include lowercase: ${includeLowercase} \n Include uppercase: ${includeUppercase} \n Include numeric: ${includeNumeric} \n Include special: ${includeSpecial}`);
     }
   }  
-  
-  
   
   // check at least one type is included
   
