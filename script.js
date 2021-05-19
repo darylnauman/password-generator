@@ -25,10 +25,10 @@ function generatePassword() {
   getPasswordLength();
   console.log(`Password length ${passwordLength}`);
   getPasswordCriteria();
-  console.log(`Include lowercase: ${includeLowercase}`);
-  console.log(`Include uppercase: ${includeUppercase}`);
-  console.log(`Include numeric: ${includeNumeric}`);
-  console.log(`Include special: ${includeSpecial}`);
+  // console.log(`Include lowercase: ${includeLowercase}`);
+  // console.log(`Include uppercase: ${includeUppercase}`);
+  // console.log(`Include numeric: ${includeNumeric}`);
+  // console.log(`Include special: ${includeSpecial}`);
   return;
 };
 
@@ -46,39 +46,28 @@ function getPasswordLength() {
 }
 
 function getPasswordCriteria() {
-  // Check if password will include lowercase
-  includeLowercase = prompt("Include lowercase characters?");
-  if (includeLowercase != null) {
-    includeLowercase = true;
-  } else {
-    includeLowercase = false;
-  }
-
-  // Check if password will include uppercase
-  includeUppercase = prompt("Include uppercase characters?");
-  if (includeUppercase != null) {
-    includeUppercase = true;
-  } else {
-    includeUppercase = false;
-  }
-
-  // Check if password will include numeric
-  includeNumeric = prompt("Include numbers?");
-  if (includeNumeric != null) {
-    includeNumeric = true;
-  } else {
-    includeNumeric = false;
-  }
-
-  // Check if password will include special characters
-  includeSpecial = prompt("Include special characters?");
-  if (includeSpecial != null) {
-    includeSpecial = true;
-  } else {
-    includeSpecial = false;
-  }
-
+  
+  var isPasswordCriteriaValid = false;
+    
+  while (!isPasswordCriteriaValid) {
+    // Ask if password will include lowercase, uppercase, numeric and/or special characters
+    includeLowercase = confirm("Select OK to include lowercase characters, otherwise select Cancel.");
+    includeUppercase = confirm("Select OK to include uppercase characters, otherwise select Cancel.");
+    includeNumeric = confirm("Select OK to include numbers, otherwise select Cancel.");
+    includeSpecial = confirm("Select OK to include special characters, otherwise select Cancel.");         
+    
+    if (includeLowercase === false && includeUppercase === false && userNumeric === false && includeSpecial === false) {
+      alert("Please ensure at least one character type is selected for the password.");
+    } else {
+      isPasswordCriteriaValid = true;
+      alert(`Include lowercase: ${includeLowercase} \n Include uppercase: ${includeUppercase} \n Include numeric: ${includeNumeric} \n Include special: ${includeSpecial}`);
+    }
+  }  
+  
+  
+  
   // check at least one type is included
+  
 }
 
 // Acceptance Criteria
