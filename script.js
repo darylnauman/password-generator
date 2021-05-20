@@ -1,13 +1,10 @@
 var passwordLength;
-var password;
-
-// Variables to track if user wishes to include lowercase letters, uppercase letters, numbers and/or special characters in their password
 var includeLowercase;
 var includeUppercase; 
 var includeNumeric;
 var includeSpecial;
 
-// Arrays of values to create password
+// Arrays of values available to create password from
 const digits = ["0","1","2","3","4","5","6","7","8","9"];
 const specialCharacters = [" ", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+","-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[","\\", "]", "^", "_", "`", "{", "|", "}", "~"];
 const alphabetUppercase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
@@ -20,7 +17,7 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-    passwordText.value = password;
+  passwordText.value = password;
 }
 
 // Add event listener to generate button - Assignment Code
@@ -34,18 +31,20 @@ function generatePassword() {
   return password;
 };
 
-// Ask user desired password length - checks for a valid length between 8 and 128 characters
+// Ask user desired password length - checks to ensure entered value is both a number and is between 8 and 128
 function getPasswordLength() {
-  passwordLength = prompt("Please enter your desired password length", "At least 8 characters and no more than 128 characters");
-  passwordLength = parseInt(passwordLength);
-  
-  if (passwordLength < 8 || passwordLength > 128) {
-    console.log("invalid length");
-    getPasswordLength();
-  } else {
-    console.log("valid length");
-    console.log(`Password length ${passwordLength}`);
-  };
+  var isPasswordLengthValid = false;
+
+    while (isPasswordLengthValid === false) {
+      passwordLength = prompt("Please enter your desired password length.", "A number between 8 and 128.");
+      passwordLength = parseInt(passwordLength);
+      
+      if ( (passwordLength < 8 || passwordLength > 128) || isNaN(passwordLength)) {
+        alert("Please try again.");
+      } else {
+        isPasswordLengthValid = true;
+      }
+    }  
   return;
 }
 
