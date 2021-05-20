@@ -8,7 +8,7 @@ The focus of this homework assignment for the University of Toronto SCS Coding B
 - Allows the user to select if they wish to generate a password from lowercase letters, uppercase letters, digits (0 - 9), and/or special characters.
 - Application checks that the user selects at least one character set otherwise they are notified to ensure they select at least one and are provided the options again to select from.
 - An array of possible characters for this user's password is created by concatenating the selected arrays of acceptable characters (e.g., digits, special characters)
-- Password is created by selecting values in this array of possible characters based on array index using a random number created using Math.floor() & Math.random() functions.
+- Password is created by selecting values in this array of possible characters based on array index using random numbers created using Math.floor() & Math.random() functions.
 - Password will be of desired length through use of a for loop and then written into textbox on the page.
 
 ## Link
