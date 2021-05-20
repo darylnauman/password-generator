@@ -74,30 +74,38 @@ function getPasswordCriteria() {
 
 // Creates an array from desired characters from other arrays then creates password by looping through this new array based on password length selected values at random
 function createPassword() {
-  var passwordOptions = [];
+  var characterOptions = [];
   
-  // console.log(`passwordOptions: ${passwordOptions}`);
+  // console.log(`characterOptions: ${characterOptions}`);
 
   if (includeLowercase) {
-    passwordOptions = passwordOptions.concat(alphabetLowercase);
-    // console.log(`passwordOptions: ${passwordOptions}`);
+    characterOptions = characterOptions.concat(alphabetLowercase);
+    // console.log(`characterOptions: ${characterOptions}`);
   }
   if (includeUppercase) {
-    passwordOptions = passwordOptions.concat(alphabetUppercase);
-    // console.log(`passwordOptions: ${passwordOptions}`);
+    characterOptions = characterOptions.concat(alphabetUppercase);
+    // console.log(`characterOptions: ${characterOptions}`);
   }
   if (includeNumeric) {
-    passwordOptions = passwordOptions.concat(digits);
-    // console.log(`passwordOptions: ${passwordOptions}`);
+    characterOptions = characterOptions.concat(digits);
+    // console.log(`characterOptions: ${characterOptions}`);
   }
   if (includeSpecial) {
-    passwordOptions = passwordOptions.concat(specialCharacters);
-    // console.log(`passwordOptions: ${passwordOptions}`);
+    characterOptions = characterOptions.concat(specialCharacters);
+    // console.log(`characterOptions: ${characterOptions}`);
   }
-    
-  // console.log(passwordOptions.length);
+  
+  // Generate first password character
+  password = characterOptions[Math.floor(Math.random() * characterOptions.length)];
+  console.log(`In createPassword - Password: ${password}`);
+
+  // Generate second password character
+  password = password + characterOptions[Math.floor(Math.random() * characterOptions.length)];
+  console.log(`In createPassword - Password: ${password}`);
+
+  // console.log(characterOptions.length);
   // password = "password1234";
-  // console.log(`Password: ${password}.`);
+  // console.log(`In createPassword - Password: ${password}`);
 
   return;
 
