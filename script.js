@@ -34,7 +34,7 @@ function generatePassword() {
   return password;
 };
 
-// Asks user to provide desired password length - checks for a valid length between 8 and 128 characters
+// Ask user desired password length - checks for a valid length between 8 and 128 characters
 function getPasswordLength() {
   passwordLength = prompt("Please enter your desired password length", "At least 8 characters and no more than 128 characters");
   passwordLength = parseInt(passwordLength);
@@ -49,13 +49,12 @@ function getPasswordLength() {
   return;
 }
 
-// Asks user what character types they would like to include in their passwork - checks that at least one is selected
+// Asks user what character types to include in their password - checks that at least one is selected
 function getPasswordCriteria() {
   
   var isPasswordCriteriaValid = false;
     
   while (!isPasswordCriteriaValid) {
-    // Ask if password will include lowercase, uppercase, numeric and/or special characters
     includeLowercase = confirm("Select OK to include LOWERCASE characters, otherwise select Cancel.");
     includeUppercase = confirm("Select OK to include UPPERCASE characters, otherwise select Cancel.");
     includeNumeric = confirm("Select OK to include DIGITS, otherwise select Cancel.");
@@ -65,68 +64,33 @@ function getPasswordCriteria() {
       alert("Please ensure at least one character type is selected for the password.");
     } else {
       isPasswordCriteriaValid = true;
-      alert(`Include lowercase: ${includeLowercase} \n Include uppercase: ${includeUppercase} \n Include numeric: ${includeNumeric} \n Include special: ${includeSpecial}`);
+      // alert(`Include lowercase: ${includeLowercase} \n Include uppercase: ${includeUppercase} \n Include numeric: ${includeNumeric} \n Include special: ${includeSpecial}`);
     }
   }
-
   return;
 }
 
-// Creates an array from desired characters from other arrays then creates password by looping through this new array based on password length selected values at random
+// Create an array from desired characters then create password by looping through new array of desired characters
 function createPassword() {
   var characterOptions = [];
+  password = '';
   
-  // console.log(`characterOptions: ${characterOptions}`);
-
   if (includeLowercase) {
     characterOptions = characterOptions.concat(alphabetLowercase);
-    // console.log(`characterOptions: ${characterOptions}`);
   }
   if (includeUppercase) {
     characterOptions = characterOptions.concat(alphabetUppercase);
-    // console.log(`characterOptions: ${characterOptions}`);
   }
   if (includeNumeric) {
     characterOptions = characterOptions.concat(digits);
-    // console.log(`characterOptions: ${characterOptions}`);
   }
   if (includeSpecial) {
     characterOptions = characterOptions.concat(specialCharacters);
-    // console.log(`characterOptions: ${characterOptions}`);
   }
   
-  // Generate first password character
-  password = characterOptions[Math.floor(Math.random() * characterOptions.length)];
-  console.log(`In createPassword - Password: ${password}`);
-
-  // Generate second password character
-  password = password + characterOptions[Math.floor(Math.random() * characterOptions.length)];
-  console.log(`In createPassword - Password: ${password}`);
-
-  // console.log(characterOptions.length);
-  // password = "password1234";
-  // console.log(`In createPassword - Password: ${password}`);
-
+  // Based on password length iterate through characterOptions array and add randomly selected value to password variable
+  for (var i = 0; i < passwordLength; i++) {
+    password = password + characterOptions[Math.floor(Math.random() * characterOptions.length)];
+  }
   return;
-
 }
-
-
-
-// Acceptance Criteria
-
-// GIVEN I need a new, secure password
-// WHEN I click the button to generate a password
-// THEN I am presented with a series of prompts for password criteria
-// WHEN prompted for password criteria
-// THEN I select which criteria to include in the password
-// WHEN prompted for the length of the password
-// THEN I choose a length of at least 8 characters and no more than 128 characters
-// WHEN prompted for character types to include in the password
-// THEN I choose lowercase, uppercase, numeric, and/or special characters
-// WHEN I answer each prompt
-// THEN my input should be validated and at least one character type should be selected
-// WHEN all prompts are answered
-// THEN a password is generated that matches the selected criteria
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
